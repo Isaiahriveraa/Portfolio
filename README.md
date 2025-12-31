@@ -4,10 +4,10 @@ Professional developer portfolio for Yonie Isaiah Rivera-Aguilar.
 
 ## Tech Stack
 
-- Next.js 14+ (App Router)
-- React 18+
+- Next.js 16+ (App Router)
+- React 19
 - TypeScript
-- Tailwind CSS
+- Tailwind CSS v4
 - Framer Motion
 
 ## Features
@@ -25,6 +25,10 @@ npm install
 npm run dev
 ```
 
-## License
+Open [http://localhost:3000](http://localhost:3000) to view.
 
-MIT
+## Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
