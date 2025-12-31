@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { NAV_ITEMS, SITE_CONFIG } from "@/lib/constants";
 import { Container } from "./Container";
@@ -21,12 +22,12 @@ export function Header() {
       <Container>
         <div className="flex h-16 items-center justify-between">
           {/* Logo / Name */}
-          <a
-            href="#"
+          <Link
+            href="/"
             className="text-lg font-semibold text-foreground transition-colors hover:text-primary"
           >
             {SITE_CONFIG.name.split(" ")[0]}
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-8 md:flex">
@@ -53,6 +54,7 @@ export function Header() {
             className="p-2 text-text-muted transition-colors hover:text-foreground md:hidden"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -61,6 +63,8 @@ export function Header() {
 
       {/* Mobile Menu */}
       <div
+        id="mobile-menu"
+        aria-hidden={!isMobileMenuOpen}
         className={cn(
           "overflow-hidden border-t border-border/50 bg-background/95 backdrop-blur-md transition-all duration-300 md:hidden",
           isMobileMenuOpen ? "max-h-96" : "max-h-0 border-t-0"

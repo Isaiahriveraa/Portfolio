@@ -1,5 +1,3 @@
-"use client";
-
 import { SOCIAL_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
