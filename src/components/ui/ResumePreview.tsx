@@ -45,7 +45,15 @@ export function ResumePreview() {
       {/* Resume Card (Thumbnail) */}
       <div className="relative z-10 flex justify-center">
         <motion.div
+          role="button"
+          tabIndex={0}
           onClick={() => setIsExpanded(true)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              setIsExpanded(true);
+            }
+          }}
           whileTap={{ scale: 0.98 }}
           className="group relative cursor-pointer aspect-[8.5/11] w-full max-w-sm overflow-hidden rounded-xl border border-border bg-white shadow-2xl"
         >
@@ -166,8 +174,6 @@ export function ResumePreview() {
               <a
                 href="/resume.pdf"
                 download
-                target="_blank"
-                rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-background hover:bg-primary-hover transition-colors"
               >
                 <Download size={16} />
