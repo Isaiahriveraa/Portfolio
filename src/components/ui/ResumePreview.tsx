@@ -91,18 +91,22 @@ export function ResumePreview() {
         }`}
         aria-hidden={!isExpanded}
       >
-        {/* Backdrop */}
+        {/* Backdrop - blur only */}
         <div
-          className="absolute inset-0 bg-background/80 backdrop-blur-md"
+          className="absolute inset-0 backdrop-blur-lg"
           onClick={handleClose}
         />
 
         {/* Modal Content */}
         <div className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
           <div
-            className={`relative h-[90vh] w-full max-w-5xl overflow-hidden rounded-2xl border border-border bg-white shadow-2xl pointer-events-auto transition-transform duration-300 ease-out ${
+            className={`relative aspect-[8.5/11] h-[90vh] overflow-hidden rounded-lg pointer-events-auto transition-transform duration-300 ease-out ${
               isExpanded ? "translate-y-0" : "translate-y-full"
             }`}
+            style={{
+              boxShadow:
+                "0 0 60px 20px rgba(16, 185, 129, 0.3), 0 0 100px 40px rgba(16, 185, 129, 0.15)",
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Scrollable PDF Area */}
