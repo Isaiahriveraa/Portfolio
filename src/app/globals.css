@@ -49,3 +49,13 @@ body {
   background: var(--primary-muted);
   color: var(--foreground);
 }
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
