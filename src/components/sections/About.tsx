@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
@@ -20,17 +21,23 @@ export function About() {
         </AnimatedSection>
 
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
-          {/* Profile Image Placeholder */}
+          {/* Profile Image */}
           <AnimatedSection delay={0.1}>
-            <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-surface">
-              <div className="absolute inset-0 flex items-center justify-center text-text-muted">
-                <div className="text-center">
-                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-primary/20" />
-                  <p className="text-sm">Profile Photo</p>
-                </div>
+            <div className="flex flex-col items-center">
+              <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-surface">
+                <Image
+                  src="/profile.jpg"
+                  alt="Yonie Isaiah Rivera-Aguilar"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                {/* Decorative gradient */}
+                <div className="absolute -bottom-4 -right-4 h-32 w-32 rounded-full bg-primary/20 blur-2xl" />
               </div>
-              {/* Decorative gradient */}
-              <div className="absolute -bottom-4 -right-4 h-32 w-32 rounded-full bg-primary/20 blur-2xl" />
+              <p className="mt-4 text-sm text-text-muted">
+                Building Guru @WINFO26
+              </p>
             </div>
           </AnimatedSection>
 
@@ -52,9 +59,9 @@ export function About() {
               </p>
               <p>
                 When I&apos;m not coding, you can find me exploring new technologies,
-                contributing to open-source projects, or learning about the latest
+                contributing to new projects with friends, or learning about the latest
                 trends in software development. I&apos;m always eager to take on new
-                challenges and grow as a developer.
+                challenges and grow as a developer. Away from tech I love to rockclimb!
               </p>
             </div>
           </AnimatedSection>
