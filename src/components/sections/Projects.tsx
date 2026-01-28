@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { Marquee } from "@/components/ui/Marquee";
 import { ProjectCard } from "@/components/ui/ProjectCard";
+import { ScrollDown } from "@/components/ui/ScrollDown";
 import { PROJECTS } from "@/lib/projects";
 
 /**
@@ -32,6 +33,12 @@ export function Projects() {
           ))}
         </Marquee>
       </AnimatedSection>
+
+      <Container>
+        <AnimatedSection delay={0.3}>
+          <ScrollDown href="#contact" className="mt-16" />
+        </AnimatedSection>
+      </Container>
     </section>
   );
 }

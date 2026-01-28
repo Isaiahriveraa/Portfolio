@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { ResumePreview } from "@/components/ui/ResumePreview";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { ScrollDown } from "@/components/ui/ScrollDown";
 import { SKILLS, SKILL_CATEGORIES, type SkillCategory } from "@/data/skills";
 
 /**
@@ -74,6 +75,10 @@ export function Skills() {
             {rightCategories.map((cat, idx) => renderSkillGroup(cat, idx + 2))}
           </div>
         </div>
+
+        <AnimatedSection delay={0.3}>
+          <ScrollDown href="#projects" className="mt-16" />
+        </AnimatedSection>
       </Container>
     </section>
   );

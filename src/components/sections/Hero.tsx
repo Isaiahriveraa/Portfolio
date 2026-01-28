@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
+import { ScrollDown } from "@/components/ui/ScrollDown";
 import { SITE_CONFIG } from "@/lib/constants";
 
 const containerVariants = {
@@ -102,13 +102,7 @@ export function Hero() {
             variants={itemVariants}
             className="mt-16"
           >
-            <a
-              href="#about"
-              aria-label="Scroll to about section"
-              className="inline-flex animate-bounce text-text-muted transition-colors hover:text-primary"
-            >
-              <ArrowDown size={24} />
-            </a>
+            <ScrollDown href="#about" />
           </motion.div>
         </motion.div>
       </Container>
