@@ -16,7 +16,7 @@ export function Container({
   as: Component = "div",
 }: ContainerProps) {
   return (
-    <Component className={cn("mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8", className)}>
+    <Component className={cn("mx-auto w-full max-w-6xl xl:max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 lg:px-8", className)}>
       {children}
     </Component>
   );

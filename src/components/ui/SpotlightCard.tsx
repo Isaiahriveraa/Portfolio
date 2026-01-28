@@ -2,6 +2,7 @@
 
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { MouseEvent } from "react";
+import { cn } from "@/lib/utils";
 
 export function SpotlightCard({
   children,
@@ -21,7 +22,11 @@ export function SpotlightCard({
 
   return (
     <div
-      className={`group relative border border-border bg-surface overflow-hidden ${className}`}
+      className={cn(
+        "group relative border border-border bg-surface overflow-hidden",
+        "transition-colors duration-300 hover:border-primary/50",
+        className
+      )}
       onMouseMove={handleMouseMove}
     >
       <motion.div
@@ -30,7 +35,7 @@ export function SpotlightCard({
           background: useMotionTemplate`
             radial-gradient(
               650px circle at ${mouseX}px ${mouseY}px,
-              rgba(147, 51, 234, 0.15),
+              rgba(16, 185, 129, 0.15),
               transparent 80%
             )
           `,
