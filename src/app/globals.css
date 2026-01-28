@@ -50,13 +50,13 @@ body {
   color: var(--foreground);
 }
 
-/* Marquee animation */
+/* Marquee animation - translates by one viewport width for seamless loop */
 @keyframes marquee {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100vw);
   }
 }
 

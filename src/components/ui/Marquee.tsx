@@ -12,6 +12,7 @@ interface MarqueeProps {
 
 /**
  * Horizontal marquee component with infinite scroll animation.
+ * Each set of items spans 100vw with even spacing, creating a seamless loop.
  * Pauses on hover and respects reduced motion preferences.
  */
 export function Marquee({
@@ -35,16 +36,21 @@ export function Marquee({
     <div className={cn("overflow-hidden", className)}>
       <div
         className={cn(
-          "flex w-max gap-6 pl-[100vw]",
+          "flex",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
         style={{
           animation: `marquee ${speed}s linear infinite`,
         }}
       >
-        {children}
-        {/* Duplicate children for seamless loop */}
-        {children}
+        {/* First set - spans full viewport width with even spacing */}
+        <div className="flex min-w-[100vw] shrink-0 justify-around">
+          {children}
+        </div>
+        {/* Duplicate set for seamless loop */}
+        <div className="flex min-w-[100vw] shrink-0 justify-around">
+          {children}
+        </div>
       </div>
     </div>
   );
