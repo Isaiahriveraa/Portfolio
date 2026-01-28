@@ -32,6 +32,7 @@
   --color-text-muted: var(--text-muted);
   --color-text-subtle: var(--text-subtle);
   --font-sans: var(--font-inter);
+  --animate-marquee: marquee linear infinite;
 }
 
 html {
