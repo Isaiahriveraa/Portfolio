@@ -26,7 +26,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
     >
       <motion.div
         className={cn(
-          "group relative w-80 overflow-hidden rounded-xl",
+          "group relative flex flex-col w-[280px] sm:w-80 h-[400px] overflow-hidden rounded-xl",
           "bg-surface border border-border",
           "transition-colors duration-300",
           "hover:border-primary/50",
@@ -36,7 +36,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         transition={{ duration: 0.2, ease: "easeOut" }}
       >
         {/* Image container */}
-        <div className="relative aspect-video overflow-hidden">
+        <div className="relative h-48 w-full flex-shrink-0 overflow-hidden">
           <Image
             src={project.image}
             alt={project.title}
@@ -66,21 +66,24 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         </div>
 
         {/* Content */}
-        <div className="p-4">
+        <div className="flex flex-1 flex-col p-4">
           <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
             {project.title}
           </h3>
-          <p className="text-sm text-text-muted mt-1 line-clamp-2">
+          <p className="text-sm text-text-muted mt-1 line-clamp-3">
             {project.description}
           </p>
 
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mt-3">
-            {project.tags.map((tag) => (
+          {/* Tags - Pushed to bottom */}
+          <div className="mt-auto pt-4 flex flex-wrap gap-2">
+            {project.tags.slice(0, 4).map((tag) => (
               <Badge key={tag} variant="outline">
                 {tag}
               </Badge>
             ))}
+            {project.tags.length > 4 && (
+              <Badge variant="outline">+{project.tags.length - 4}</Badge>
+            )}
           </div>
         </div>
 
