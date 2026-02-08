@@ -100,7 +100,7 @@ export function About() {
                     blockSize={10}
                     blockMargin={3}
                     theme={{
-                      dark: ["#1a1a25", "#2a2520", "#4a3f30", "#8a7550", "#e8e0d4"],
+                      dark: ["#1a1a25", "#4d1f1f", "#8f2f2f", "#d94f4f", "#ff5252"],
                     }}
                   />
                 </div>
