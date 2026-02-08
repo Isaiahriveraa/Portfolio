@@ -13,7 +13,7 @@ const skillOrder: SkillCategory[] = ["languages", "frontend", "backend", "tools"
 
 export function About() {
   return (
-    <section id="about" className="py-24">
+    <section id="about" className="py-12 md:py-24">
       <Container>
         <AnimatedSection>
           <SectionHeading
@@ -23,11 +23,11 @@ export function About() {
           />
         </AnimatedSection>
 
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2 lg:items-start">
           {/* Left Column — Bio + Resume */}
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8">
             <AnimatedSection delay={0.1}>
-              <div className="flex items-start gap-6">
+              <div className="flex items-start gap-4 sm:gap-6">
                 <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl border border-border">
                   <Image
                     src="/profile.jpg"
@@ -60,7 +60,7 @@ export function About() {
           {/* Right Column — Skills + GitHub Calendar */}
           <div className="space-y-6">
             <AnimatedSection delay={0.15}>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {skillOrder.map((category) => {
                   const config = SKILL_CATEGORIES[category];
                   const skills = SKILLS.filter((s) => s.category === category);
@@ -92,13 +92,13 @@ export function About() {
                 <h3 className="mb-3 text-sm font-semibold text-accent">
                   Contribution Activity
                 </h3>
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
                   <GitHubCalendar
                     username="Isaiahriveraa"
                     colorScheme="dark"
                     fontSize={11}
-                    blockSize={10}
-                    blockMargin={3}
+                    blockSize={8}
+                    blockMargin={2}
                     theme={{
                       dark: ["#1a1a25", "#4d1f1f", "#8f2f2f", "#d94f4f", "#ff5252"],
                     }}

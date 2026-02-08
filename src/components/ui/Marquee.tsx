@@ -26,7 +26,7 @@ export function Marquee({
 
   if (prefersReducedMotion) {
     return (
-      <div className={cn("flex gap-6 overflow-x-auto pb-4 px-4", className)}>
+      <div className={cn("flex gap-4 sm:gap-6 overflow-x-auto pb-4 px-4", className)}>
         {children}
       </div>
     );
@@ -49,10 +49,10 @@ export function Marquee({
           willChange: "transform",
         }}
       >
-        <div className="flex shrink-0 min-w-max items-stretch gap-8 py-4 pr-8">
+        <div className="flex shrink-0 min-w-max items-stretch gap-4 sm:gap-6 md:gap-8 py-4 pr-4 sm:pr-6 md:pr-8">
           {children}
         </div>
-        <div className="flex shrink-0 min-w-max items-stretch gap-8 py-4 pr-8">
+        <div className="flex shrink-0 min-w-max items-stretch gap-4 sm:gap-6 md:gap-8 py-4 pr-4 sm:pr-6 md:pr-8">
           {children}
         </div>
       </div>

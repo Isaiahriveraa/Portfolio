@@ -25,7 +25,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
     >
       <motion.div
         className={cn(
-          "group relative flex flex-col w-[320px] sm:w-96 h-[420px] overflow-hidden rounded-xl",
+          "group relative flex flex-col w-[280px] sm:w-80 md:w-96 h-auto min-h-[400px] sm:h-[420px] overflow-hidden rounded-xl",
           "glass-card glass-card-hover",
           className
         )}
