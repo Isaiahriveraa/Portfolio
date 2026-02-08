@@ -33,7 +33,7 @@ export function SectionHeading({
           {badge}
         </Badge>
       )}
-      <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
+      <h2 className="text-3xl font-bold gradient-text font-[family-name:var(--font-display)] sm:text-4xl">
         {title}
       </h2>
       {subtitle && (

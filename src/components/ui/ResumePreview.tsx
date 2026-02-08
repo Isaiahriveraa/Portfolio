@@ -86,10 +86,10 @@ export function ResumePreview() {
   return (
     <>
       {/* Resume Card (Thumbnail) */}
-      <div className="relative z-10 flex justify-center">
+      <div className="relative z-10 flex flex-col items-center">
         <div
           ref={containerRef}
-          className="relative aspect-[8.5/11] w-full max-w-xs sm:max-w-sm"
+          className="relative aspect-[8.5/11] w-full max-w-xs sm:max-w-sm mx-auto"
         >
           <motion.div
             role="button"
@@ -102,7 +102,7 @@ export function ResumePreview() {
               }
             }}
             whileTap={{ scale: 0.98 }}
-            className="relative h-full w-full cursor-pointer overflow-hidden rounded-xl border border-border bg-white shadow-2xl"
+            className="relative h-full w-full cursor-pointer overflow-hidden rounded-xl border border-glass-border"
           >
             {/* Resume PDF - rendered at full size then scaled down */}
             <div
@@ -116,12 +116,12 @@ export function ResumePreview() {
               <iframe
                 src="/resume.pdf#toolbar=0&navpanes=0&scrollbar=0"
                 title="Resume Thumbnail"
-                className="pointer-events-none h-full w-full border-none bg-white"
+                className="pointer-events-none h-full w-full border-none bg-background"
                 tabIndex={-1}
               />
             </div>
 
-            {/* Click to expand hint - INSIDE the card */}
+            {/* Click to expand hint */}
             <motion.div
               className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10"
               animate={{ y: [0, -3, 0] }}
@@ -132,9 +132,10 @@ export function ResumePreview() {
               }}
             >
               <motion.span
-                className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-background shadow-lg backdrop-blur-md rounded-full"
+                className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium shadow-lg backdrop-blur-md rounded-full"
                 style={{
-                  background: "rgba(16, 185, 129, 0.9)",
+                  background: "rgba(232, 224, 212, 0.9)",
+                  color: "#050508",
                 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -145,6 +146,16 @@ export function ResumePreview() {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Download link below resume */}
+        <a
+          href="/resume.pdf"
+          download
+          className="mt-4 flex items-center gap-2 btn-primary text-accent-light px-4 py-2 text-sm font-semibold rounded-lg"
+        >
+          <Download size={16} />
+          Download Resume
+        </a>
       </div>
 
       {/* Full Screen Modal */}
@@ -158,8 +169,8 @@ export function ResumePreview() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
         >
-          {/* Backdrop - blur only */}
-          <div className="absolute inset-0 backdrop-blur-lg" />
+          {/* Backdrop - dark overlay with blur to prevent flash */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-lg" />
 
           {/* Modal Content */}
           <div className="absolute inset-0 flex items-center justify-center p-4">
@@ -167,10 +178,10 @@ export function ResumePreview() {
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.15, delay: 0.05 }}
-              className="relative aspect-[8.5/11] max-h-[85vh] w-full max-w-[min(90vw,calc(85vh*8.5/11))] overflow-hidden rounded-lg bg-white"
+              className="relative aspect-[8.5/11] max-h-[85vh] w-full max-w-[min(90vw,calc(85vh*8.5/11))] overflow-hidden rounded-lg"
               style={{
                 boxShadow:
-                  "0 0 60px 20px rgba(16, 185, 129, 0.3), 0 0 100px 40px rgba(16, 185, 129, 0.15)",
+                  "0 0 60px 20px rgba(232, 224, 212, 0.3), 0 0 100px 40px rgba(232, 224, 212, 0.15)",
               }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -235,7 +246,7 @@ export function ResumePreview() {
               <a
                 href="/resume.pdf"
                 download
-                className="flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-background hover:bg-primary-hover transition-colors"
+                className="flex items-center gap-2 rounded-full btn-primary text-accent-light px-4 py-2 text-sm font-semibold transition-colors"
                 onClick={(e) => e.stopPropagation()}
               >
                 <Download size={16} />

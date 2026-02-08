@@ -10,7 +10,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="border-t border-border py-12 bg-surface-elevated/30">
+    <footer id="contact" className="border-t border-border py-12 bg-bg-secondary/30">
       <Container>
         <div className="flex flex-col items-center justify-center gap-6 text-center mb-8">
           <h2 className="text-2xl font-bold text-foreground">Get in Touch</h2>

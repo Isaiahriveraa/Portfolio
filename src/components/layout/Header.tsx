@@ -24,7 +24,7 @@ export function Header() {
           {/* Logo / Name */}
           <Link
             href="/"
-            className="text-lg font-semibold text-foreground transition-colors hover:text-primary"
+            className="text-lg font-semibold text-foreground transition-colors hover:text-accent"
           >
             {SITE_CONFIG.name.split(" ")[0]}
           </Link>

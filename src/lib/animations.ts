@@ -1,8 +1,10 @@
 import type { Variants } from "framer-motion";
 
+/** Custom easing curve — snappy entrance with smooth settle */
+export const customEasing: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 /**
  * Fade up animation for scroll reveals.
- * Elements fade in and slide up when entering viewport.
  */
 export const fadeUpVariants: Variants = {
   hidden: {
@@ -14,14 +16,13 @@ export const fadeUpVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      ease: customEasing,
     },
   },
 };
 
 /**
  * Staggered children animation.
- * Parent container that staggers child animations.
  */
 export const staggerContainerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -30,6 +31,19 @@ export const staggerContainerVariants: Variants = {
     transition: {
       staggerChildren: 0.1,
       delayChildren: 0.1,
+    },
+  },
+};
+
+/**
+ * Fast stagger for character/element reveals.
+ */
+export const staggerFastVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.06,
     },
   },
 };
@@ -47,7 +61,27 @@ export const scaleUpVariants: Variants = {
     scale: 1,
     transition: {
       duration: 0.4,
-      ease: "easeOut",
+      ease: customEasing,
+    },
+  },
+};
+
+/**
+ * Glow in animation — scale + blur entrance.
+ */
+export const glowInVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.95,
+    filter: "blur(8px)",
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.8,
+      ease: customEasing,
     },
   },
 };

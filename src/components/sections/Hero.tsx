@@ -3,108 +3,97 @@
 import { motion } from "framer-motion";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
-import { ScrollDown } from "@/components/ui/ScrollDown";
+import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { SITE_CONFIG } from "@/lib/constants";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
+const customEasing: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-const itemVariants = {
+const itemVariants = (delay: number) => ({
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
-      ease: "easeOut" as const,
+      duration: 0.6,
+      ease: customEasing,
+      delay,
     },
   },
-};
+});
 
-/**
- * Hero section with animated intro, name, title, and CTAs.
- */
 export function Hero() {
   return (
     <section
       id="hero"
       className="relative flex min-h-[calc(100vh-4rem)] items-center overflow-hidden"
     >
-      {/* Background gradient */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
-      </div>
+      <AmbientBackground />
 
       <Container className="relative z-10">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="mx-auto max-w-3xl text-center"
-        >
-          {/* Greeting */}
-          <motion.p
-            variants={itemVariants}
-            className="mb-4 text-sm font-medium tracking-wide text-primary"
-          >
-            Hi, my name is
-          </motion.p>
-
+        <div className="mx-auto max-w-3xl text-center">
           {/* Name */}
           <motion.h1
-            variants={itemVariants}
-            className="mb-4 text-4xl font-bold text-foreground sm:text-5xl md:text-6xl"
+            variants={itemVariants(0)}
+            initial="hidden"
+            animate="visible"
+            className="mb-4 font-[family-name:var(--font-display)] text-5xl font-bold gradient-text sm:text-6xl md:text-7xl"
           >
             {SITE_CONFIG.name}
           </motion.h1>
 
-          {/* Title */}
+          {/* Role */}
           <motion.p
-            variants={itemVariants}
-            className="mb-6 text-2xl font-medium text-text-muted sm:text-3xl"
+            variants={itemVariants(0.2)}
+            initial="hidden"
+            animate="visible"
+            className="mb-8 text-xl text-text-secondary sm:text-2xl"
           >
             {SITE_CONFIG.title}
           </motion.p>
 
-          {/* Description */}
-          <motion.p
-            variants={itemVariants}
-            className="mx-auto mb-8 max-w-xl text-text-muted"
-          >
-            I build exceptional digital experiences with modern web technologies.
-            Passionate about clean code, intuitive design, and continuous learning.
-          </motion.p>
-
-          {/* CTAs */}
+          {/* Terminal snippet */}
           <motion.div
-            variants={itemVariants}
-            className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+            variants={itemVariants(0.4)}
+            initial="hidden"
+            animate="visible"
+            className="mx-auto mb-10 max-w-lg glass-card rounded-lg p-4 text-left"
+          >
+            <div className="mb-2 flex items-center gap-2">
+              <div className="h-3 w-3 rounded-full bg-red-500/60" />
+              <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
+              <div className="h-3 w-3 rounded-full bg-green-500/60" />
+              <span className="ml-2 font-[family-name:var(--font-mono)] text-xs text-text-muted">
+                ~/portfolio
+              </span>
+            </div>
+            <div className="font-[family-name:var(--font-mono)] text-sm leading-relaxed">
+              <p className="text-text-muted">
+                <span className="text-accent">$</span> cat about.txt
+              </p>
+              <p className="mt-1 text-text-secondary">
+                Full-stack engineer building tools that
+              </p>
+              <p className="text-text-secondary">
+                feel like magic. Currently shipping
+              </p>
+              <p className="text-text-secondary">
+                <span className="text-accent-light">Guru</span> &{" "}
+                <span className="text-accent-light">Ego</span>.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* CTA */}
+          <motion.div
+            variants={itemVariants(0.6)}
+            initial="hidden"
+            animate="visible"
           >
             <ButtonLink href="#projects" size="lg">
               View Projects
             </ButtonLink>
-            <ButtonLink href="#contact" variant="outline" size="lg">
-              Contact Me
-            </ButtonLink>
           </motion.div>
-
-          {/* Scroll indicator */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-16"
-          >
-            <ScrollDown href="#about" />
-          </motion.div>
-        </motion.div>
+        </div>
       </Container>
     </section>
   );

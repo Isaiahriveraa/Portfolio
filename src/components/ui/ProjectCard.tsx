@@ -12,24 +12,21 @@ interface ProjectCardProps {
   className?: string;
 }
 
-/**
- * Project card with hover effects (lift, glow, image zoom).
- * Links to the live project URL.
- */
 export function ProjectCard({ project, className }: ProjectCardProps) {
+  const isPlaceholderLink = project.url === "#";
+
   return (
     <a
       href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block flex-shrink-0"
+      target={isPlaceholderLink ? undefined : "_blank"}
+      rel={isPlaceholderLink ? undefined : "noopener noreferrer"}
+      onClick={isPlaceholderLink ? (e) => e.preventDefault() : undefined}
+      className={cn("block flex-shrink-0", isPlaceholderLink && "cursor-default")}
     >
       <motion.div
         className={cn(
-          "group relative flex flex-col w-[280px] sm:w-80 h-[400px] overflow-hidden rounded-xl",
-          "bg-surface border border-border",
-          "transition-colors duration-300",
-          "hover:border-primary/50",
+          "group relative flex flex-col w-[320px] sm:w-96 h-[420px] overflow-hidden rounded-xl",
+          "glass-card glass-card-hover",
           className
         )}
         whileHover={{ y: -4 }}
@@ -43,7 +40,6 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
-          {/* Gradient overlay on hover */}
           <div
             className={cn(
               "absolute inset-0",
@@ -51,30 +47,30 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
               "opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             )}
           />
-          {/* External link icon */}
-          <div
-            className={cn(
-              "absolute top-3 right-3",
-              "flex items-center justify-center",
-              "w-8 h-8 rounded-full",
-              "bg-background/80 backdrop-blur-sm",
-              "opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            )}
-          >
-            <ExternalLink className="w-4 h-4 text-primary" />
-          </div>
+          {!isPlaceholderLink && (
+            <div
+              className={cn(
+                "absolute top-3 right-3",
+                "flex items-center justify-center",
+                "w-8 h-8 rounded-full",
+                "bg-background/80 backdrop-blur-sm",
+                "opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              )}
+            >
+              <ExternalLink className="w-4 h-4 text-accent" />
+            </div>
+          )}
         </div>
 
         {/* Content */}
         <div className="flex flex-1 flex-col p-4">
-          <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+          <h3 className="font-semibold text-foreground group-hover:text-accent transition-colors">
             {project.title}
           </h3>
-          <p className="text-sm text-text-muted mt-1 line-clamp-3">
+          <p className="text-sm text-text-secondary mt-1 line-clamp-3">
             {project.description}
           </p>
 
-          {/* Tags - Pushed to bottom */}
           <div className="mt-auto pt-4 flex flex-wrap gap-2">
             {project.tags.slice(0, 4).map((tag) => (
               <Badge key={tag} variant="outline">
@@ -86,16 +82,6 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
             )}
           </div>
         </div>
-
-        {/* Glow effect behind card */}
-        <div
-          className={cn(
-            "absolute -inset-px rounded-xl -z-10",
-            "bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0",
-            "opacity-0 blur-sm transition-opacity duration-300",
-            "group-hover:opacity-100"
-          )}
-        />
       </motion.div>
     </a>
   );

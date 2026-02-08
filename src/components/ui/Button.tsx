@@ -16,16 +16,14 @@ interface ButtonLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> 
 }
 
 const baseStyles =
-  "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50";
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary:
-    "bg-primary text-background hover:bg-primary-hover shadow-sm shadow-primary/20",
-  secondary:
-    "bg-surface-elevated text-foreground hover:bg-surface border border-border",
+  primary: "btn-primary text-accent-light rounded-lg",
+  secondary: "btn-secondary text-foreground rounded-lg",
   outline:
-    "border border-primary text-primary hover:bg-primary hover:text-background",
-  ghost: "text-text-muted hover:text-foreground hover:bg-surface-elevated",
+    "border border-accent/30 text-accent hover:bg-accent/10 hover:text-accent-light",
+  ghost: "text-text-secondary hover:text-foreground hover:bg-glass",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -56,19 +54,30 @@ export function Button({
 
 /**
  * Link styled as a button for navigation.
+ * Uses native <a> for hash links, Next.js Link for page navigation.
  */
 export function ButtonLink({
   variant = "primary",
   size = "md",
   className,
   children,
+  href,
   ...props
 }: ButtonLinkProps) {
+  const styles = cn(baseStyles, variantStyles[variant], sizeStyles[size], className);
+
+  // Use native anchor for hash links (same-page scrolling)
+  if (href.startsWith("#")) {
+    return (
+      <a href={href} className={styles} {...props}>
+        {children}
+      </a>
+    );
+  }
+
+  // Use Next.js Link for page navigation
   return (
-    <Link
-      className={cn(baseStyles, variantStyles[variant], sizeStyles[size], className)}
-      {...props}
-    >
+    <Link href={href} className={styles} {...props}>
       {children}
     </Link>
   );

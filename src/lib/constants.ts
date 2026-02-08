@@ -5,9 +5,8 @@ import { Github, Linkedin, Mail, type LucideIcon } from "lucide-react";
  * Each item has a label and href for smooth scrolling to sections.
  */
 export const NAV_ITEMS = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ] as const;
 

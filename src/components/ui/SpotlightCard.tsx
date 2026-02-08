@@ -23,8 +23,8 @@ export function SpotlightCard({
   return (
     <div
       className={cn(
-        "group relative border border-border bg-surface overflow-hidden",
-        "transition-colors duration-300 hover:border-primary/50",
+        "group relative border border-border bg-bg-secondary overflow-hidden",
+        "transition-colors duration-300 hover:border-accent/30",
         className
       )}
       onMouseMove={handleMouseMove}
@@ -35,7 +35,7 @@ export function SpotlightCard({
           background: useMotionTemplate`
             radial-gradient(
               650px circle at ${mouseX}px ${mouseY}px,
-              rgba(16, 185, 129, 0.15),
+              rgba(232, 224, 212, 0.15),
               transparent 80%
             )
           `,

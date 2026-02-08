@@ -1,14 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import { GitHubCalendar } from "react-github-calendar";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
-import { ScrollDown } from "@/components/ui/ScrollDown";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { ResumePreview } from "@/components/ui/ResumePreview";
+import { SKILLS, SKILL_CATEGORIES, type SkillCategory } from "@/data/skills";
 
-/**
- * About section with bio and personal introduction.
- */
+const skillOrder: SkillCategory[] = ["languages", "frontend", "backend", "tools"];
+
 export function About() {
   return (
     <section id="about" className="py-24">
@@ -16,61 +18,96 @@ export function About() {
         <AnimatedSection>
           <SectionHeading
             badge="About"
-            title="Get to know me"
-            subtitle="A brief introduction to who I am and what I do"
+            title="About Me"
+            subtitle="What I build, what I know, and proof of work"
           />
         </AnimatedSection>
 
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
-          {/* Profile Image */}
-          <AnimatedSection delay={0.1}>
-            <div className="flex flex-col items-center">
-              <div className="relative mx-auto aspect-square w-full max-w-[240px] sm:max-w-sm overflow-hidden rounded-2xl border border-border bg-surface">
-                <Image
-                  src="/profile.jpg"
-                  alt="Yonie Isaiah Rivera-Aguilar"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                {/* Decorative gradient */}
-                <div className="absolute -bottom-4 -right-4 h-32 w-32 rounded-full bg-primary/20 blur-2xl" />
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+          {/* Left Column — Bio + Resume */}
+          <div className="space-y-8">
+            <AnimatedSection delay={0.1}>
+              <div className="flex items-start gap-6">
+                <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl border border-border">
+                  <Image
+                    src="/profile.jpg"
+                    alt="Yonie Isaiah Rivera-Aguilar"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <div className="space-y-3 text-text-secondary text-sm leading-relaxed">
+                  <p>
+                    Full-stack engineer specializing in React, Next.js, and TypeScript.
+                    I build tools that solve real problems — from peer-to-peer tutoring
+                    platforms to voice-native macOS automation.
+                  </p>
+                  <p>
+                    Currently shipping{" "}
+                    <span className="text-accent-light">Guru</span> (peer tutoring @ WINFO) and{" "}
+                    <span className="text-accent-light">Ego</span> (on-device voice agent for macOS).
+                  </p>
+                </div>
               </div>
-              <p className="mt-4 text-sm text-text-muted">
-                Building Guru @WINFO26
-              </p>
-            </div>
-          </AnimatedSection>
+            </AnimatedSection>
 
-          {/* Bio Content */}
-          <AnimatedSection delay={0.2}>
-            <div className="space-y-4 text-text-muted">
-              <p>
-                I&apos;m a passionate software engineer with a deep love for building
-                disruptive experiences that make a tangible difference. I focus on
-                developing clean, efficient, and user-friendly applications that people
-                genuinely enjoy using, and I&apos;m always eager to learn on the go to
-                tackle any challenge that comes my way.
-              </p>
-              <p>
-                I specialize in full-stack development, with a core focus on modern
-                technologies like React, Next.js, TypeScript, Node.js, and JavaScript.
-                I&apos;m also familiar with languages such as Java and Python, allowing
-                me to approach problems from different architectural perspectives.
-              </p>
-              <p>
-                When I&apos;m not coding, you&apos;ll likely find me keeping up with the
-                latest technological advancements, specifically exploring how to utilize
-                and integrate AI into my workflow to drive efficiency. To stay balanced,
-                I also enjoy rock climbing and hitting the gym for a good workout session.
-              </p>
-            </div>
-          </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <ResumePreview />
+            </AnimatedSection>
+          </div>
+
+          {/* Right Column — Skills + GitHub Calendar */}
+          <div className="space-y-6">
+            <AnimatedSection delay={0.15}>
+              <div className="grid grid-cols-2 gap-4">
+                {skillOrder.map((category) => {
+                  const config = SKILL_CATEGORIES[category];
+                  const skills = SKILLS.filter((s) => s.category === category);
+                  return (
+                    <SpotlightCard key={category} className="rounded-xl p-4">
+                      <div className="mb-3 flex items-center gap-2 text-accent">
+                        <config.icon size={16} />
+                        <h3 className="text-sm font-semibold">{config.label}</h3>
+                      </div>
+                      <ul className="space-y-1.5">
+                        {skills.map((skill) => (
+                          <li
+                            key={skill.name}
+                            className="flex items-center gap-2 text-xs text-text-secondary"
+                          >
+                            <skill.icon size={12} className="text-text-muted" />
+                            {skill.name}
+                          </li>
+                        ))}
+                      </ul>
+                    </SpotlightCard>
+                  );
+                })}
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.25}>
+              <div className="glass-card rounded-xl p-4">
+                <h3 className="mb-3 text-sm font-semibold text-accent">
+                  Contribution Activity
+                </h3>
+                <div className="overflow-x-auto">
+                  <GitHubCalendar
+                    username="Isaiahriveraa"
+                    colorScheme="dark"
+                    fontSize={11}
+                    blockSize={10}
+                    blockMargin={3}
+                    theme={{
+                      dark: ["#1a1a25", "#2a2520", "#4a3f30", "#8a7550", "#e8e0d4"],
+                    }}
+                  />
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
-
-        <AnimatedSection delay={0.3}>
-          <ScrollDown href="#skills" className="mt-16" />
-        </AnimatedSection>
       </Container>
     </section>
   );

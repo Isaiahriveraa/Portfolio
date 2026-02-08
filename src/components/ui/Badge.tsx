@@ -9,9 +9,9 @@ interface BadgeProps {
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
-  default: "bg-surface-elevated text-text-muted",
-  primary: "bg-primary-muted text-primary",
-  outline: "border border-border text-text-muted",
+  default: "bg-bg-tertiary text-text-secondary",
+  primary: "bg-accent-muted text-accent",
+  outline: "border border-glass-border text-text-secondary",
 };
 
 /**
