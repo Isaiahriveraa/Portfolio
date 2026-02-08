@@ -10,10 +10,10 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="border-t border-border py-12 bg-bg-secondary/30">
+    <footer id="contact" className="border-t border-border py-8 md:py-12 bg-bg-secondary/30">
       <Container>
         <div className="flex flex-col items-center justify-center gap-6 text-center mb-8">
-          <h2 className="text-2xl font-bold text-foreground">Get in Touch</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground">Get in Touch</h2>
           <p className="text-text-muted max-w-md">
             I&apos;m currently open to new opportunities. Whether you have a question
             or just want to say hi, feel free to reach out!

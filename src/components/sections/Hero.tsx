@@ -36,7 +36,7 @@ export function Hero() {
             variants={itemVariants(0)}
             initial="hidden"
             animate="visible"
-            className="mb-4 font-[family-name:var(--font-display)] text-5xl font-bold gradient-text sm:text-6xl md:text-7xl"
+            className="mb-3 sm:mb-4 font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold gradient-text md:text-6xl lg:text-7xl"
           >
             {SITE_CONFIG.name}
           </motion.h1>
@@ -46,7 +46,7 @@ export function Hero() {
             variants={itemVariants(0.2)}
             initial="hidden"
             animate="visible"
-            className="mb-8 text-xl text-text-secondary sm:text-2xl"
+            className="mb-6 sm:mb-8 text-lg sm:text-xl text-text-secondary md:text-2xl"
           >
             {SITE_CONFIG.title}
           </motion.p>
@@ -56,7 +56,7 @@ export function Hero() {
             variants={itemVariants(0.4)}
             initial="hidden"
             animate="visible"
-            className="mx-auto mb-10 max-w-lg glass-card rounded-lg p-4 text-left"
+            className="mx-auto mb-8 sm:mb-10 max-w-md sm:max-w-lg glass-card rounded-lg p-3 sm:p-4 text-left"
           >
             <div className="mb-2 flex items-center gap-2">
               <div className="h-3 w-3 rounded-full bg-red-500/60" />

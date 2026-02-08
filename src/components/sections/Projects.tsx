@@ -9,7 +9,7 @@ import { PROJECTS } from "@/lib/projects";
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 overflow-hidden">
+    <section id="projects" className="py-12 md:py-24 overflow-hidden">
       <Container>
         <AnimatedSection>
           <SectionHeading
