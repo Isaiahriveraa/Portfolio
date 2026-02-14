@@ -78,7 +78,7 @@ export function Hero() {
               </p>
               <p className="text-text-secondary">
                 <span className="text-accent-light">Guru</span> &{" "}
-                <span className="text-accent-light">Ego</span>.
+                <span className="text-accent-light">Koda</span>.
               </p>
             </div>
           </motion.div>

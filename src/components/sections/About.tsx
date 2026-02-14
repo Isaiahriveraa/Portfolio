@@ -8,6 +8,7 @@ import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { ResumePreview } from "@/components/ui/ResumePreview";
 import { SKILLS, SKILL_CATEGORIES, type SkillCategory } from "@/data/skills";
+import Link from "next/link";
 
 const skillOrder: SkillCategory[] = ["languages", "frontend", "backend", "tools"];
 
@@ -46,7 +47,7 @@ export function About() {
                   <p>
                     Currently shipping{" "}
                     <span className="text-accent-light">Guru</span> (peer tutoring @ WINFO) and{" "}
-                    <span className="text-accent-light">Ego</span> (on-device voice agent for macOS).
+                    <span className="text-accent-light">Koda</span> (on-device voice agent for macOS).
                   </p>
                 </div>
               </div>
@@ -89,10 +90,10 @@ export function About() {
 
             <AnimatedSection delay={0.25}>
               <div className="glass-card rounded-xl p-4">
-                <h3 className="mb-3 text-sm font-semibold text-accent">
+                <h3 className="mb-3 text-sm font-semibold text-accent text-center">
                   Contribution Activity
                 </h3>
-                <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+                <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 flex justify-center">
                   <GitHubCalendar
                     username="Isaiahriveraa"
                     colorScheme="dark"
@@ -106,9 +107,12 @@ export function About() {
                 </div>
               </div>
             </AnimatedSection>
+            <h3 className="text-center text-xs text-text-secondary">
+              <Link href="https://github.com/isaiahriveraa" className="underline underline-offset-4" target="_blank">View on GitHub</Link>
+            </h3>
           </div>
         </div>
       </Container>
-    </section>
+    </section >
   );
 }
