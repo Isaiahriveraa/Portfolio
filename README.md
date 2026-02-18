@@ -1,34 +1,12 @@
 # Portfolio
 
-Professional developer portfolio for Yonie Isaiah Rivera-Aguilar.
+Hello, my name is Yonie Isaiah Rivera‑Aguilar. I am an aspiring software engineer currently studying Informatics at the University of Washington.
 
-## Tech Stack
+I am currently working on two projects:
 
-- Next.js 16+ (App Router)
-- React 19
-- TypeScript
-- Tailwind CSS v4
-- Framer Motion
+- [Koda](https://koda-sigma-six.vercel.app/)
+- [Guru](https://guruappp.netlify.app)
 
-## Features
+Feel free to check out my personal website:
 
-- Dark theme with emerald green accents
-- GitHub contribution graph
-- Project showcase
-- Responsive design
-- Smooth animations
-
-## Development
-
-```bash
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view.
-
-## Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run lint` - Run ESLint
+- [Website](https://yirivera.netlify.app/)
