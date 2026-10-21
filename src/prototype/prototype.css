@@ -1,0 +1,341 @@
+/*
+ * Styles for the `?v=N` redesign directions. Every selector is scoped to
+ * .prototype-root, so the normal page is unaffected.
+ */
+
+/* Hide the normal site chrome while a direction is showing. */
+body:has(.prototype-root) > header,
+body:has(.prototype-root) > footer {
+  display: none;
+}
+body:has(.prototype-root) > main {
+  padding-top: 0;
+  min-height: 0;
+}
+body.noise-overlay:has(.prototype-root)::before {
+  display: none;
+}
+body:has(.prototype-root-v1),
+body:has(.prototype-root-v2),
+body:has(.prototype-root-v4),
+body:has(.prototype-root-v6),
+body:has(.prototype-root-v7) {
+  background: #ffffff;
+  color: #18181b;
+}
+
+.prototype-root {
+  min-height: 100dvh;
+}
+
+.prototype-root :focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* ---------- v2 editorial ---------- */
+.prototype-v2-mark {
+  background: linear-gradient(transparent 12%, #d4ff3a 12%, #d4ff3a 88%, transparent 88%);
+  padding: 0 0.15em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.prototype-v2-scribble {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 C 40 2, 80 12, 120 6 S 180 4, 198 7' fill='none' stroke='%23a3d100' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 0.35em;
+  padding-bottom: 0.08em;
+}
+
+/* ---------- v3 dark tech ---------- */
+@keyframes prototype-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.prototype-v3-ring {
+  background: conic-gradient(from 0deg, #a855f7, #ec4899, #6d28d9, #a855f7);
+  animation: prototype-spin 8s linear infinite;
+}
+
+/* ---------- v5 retro OS ---------- */
+.prototype-v5-wallpaper {
+  background-color: #6a5fb0;
+  background-image:
+    radial-gradient(60% 70% at 78% 30%, rgba(255, 116, 160, 0.95), transparent 70%),
+    radial-gradient(50% 60% at 20% 80%, rgba(255, 140, 66, 0.9), transparent 70%),
+    radial-gradient(60% 60% at 10% 10%, rgba(64, 86, 196, 0.95), transparent 70%),
+    radial-gradient(40% 40% at 60% 90%, rgba(255, 196, 120, 0.8), transparent 70%);
+}
+.prototype-v5-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.prototype-v5-raised {
+  background: #c3c3c3;
+  box-shadow:
+    inset -1px -1px 0 #0a0a0a,
+    inset 1px 1px 0 #ffffff,
+    inset -2px -2px 0 #808080,
+    inset 2px 2px 0 #dfdfdf;
+}
+.prototype-v5-raised:active,
+.prototype-v5-pressed {
+  box-shadow:
+    inset 1px 1px 0 #0a0a0a,
+    inset -1px -1px 0 #ffffff,
+    inset 2px 2px 0 #808080,
+    inset -2px -2px 0 #dfdfdf;
+}
+.prototype-v5-sunken {
+  background: #ffffff;
+  box-shadow:
+    inset 1px 1px 0 #808080,
+    inset -1px -1px 0 #ffffff,
+    inset 2px 2px 0 #0a0a0a,
+    inset -2px -2px 0 #dfdfdf;
+}
+.prototype-v5-title {
+  background: linear-gradient(90deg, #1b1bb3, #3b6fe0);
+}
+.prototype-v5-title-idle {
+  background: linear-gradient(90deg, #7b7b7b, #a8a8a8);
+}
+
+/* ---------- v7 collage ---------- */
+.prototype-v7-pixel-frame {
+  box-shadow:
+    0 -4px 0 0 #111,
+    0 4px 0 0 #111,
+    -4px 0 0 0 #111,
+    4px 0 0 0 #111,
+    8px 8px 0 0 rgba(17, 17, 17, 0.18);
+}
+.prototype-v7-dots {
+  background-image: radial-gradient(#d4d4d8 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ---------- v8 space ---------- */
+.prototype-v8-stars-a {
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+    radial-gradient(1px 1px at 120px 80px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.5px 1.5px at 220px 160px, #fff, transparent),
+    radial-gradient(1px 1px at 300px 40px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 360px 260px, #fff, transparent),
+    radial-gradient(1px 1px at 60px 300px, rgba(255, 255, 255, 0.6), transparent);
+  background-size: 400px 340px;
+}
+.prototype-v8-stars-b {
+  background-image:
+    radial-gradient(2px 2px at 80px 120px, #ffd36b, transparent),
+    radial-gradient(1.5px 1.5px at 400px 300px, #fff, transparent),
+    radial-gradient(2px 2px at 600px 60px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1.5px 1.5px at 260px 480px, #ffe9a8, transparent);
+  background-size: 700px 560px;
+}
+.prototype-v8-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+@keyframes prototype-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.prototype-v8-orbit {
+  animation: prototype-orbit var(--prototype-orbit-duration, 40s) linear infinite;
+}
+@keyframes prototype-twinkle {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.prototype-v8-twinkle {
+  animation: prototype-twinkle 4s ease-in-out infinite;
+}
+
+/* ---------- v9 neon terminal ---------- */
+@keyframes prototype-blink {
+  50% {
+    opacity: 0;
+  }
+}
+.prototype-v9-caret {
+  animation: prototype-blink 1s steps(1) infinite;
+}
+.prototype-v9-scan {
+  background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prototype-v3-ring,
+  .prototype-v8-orbit,
+  .prototype-v8-twinkle,
+  .prototype-v9-caret {
+    animation: none;
+  }
+}
+
+/* ---------- v10 contribution pixels ---------- */
+body:has(.prototype-root-v10),
+body:has(.prototype-root-v11) {
+  background: #f4f4ee;
+  color: #121212;
+}
+.prototype-v10-cell {
+  background: var(--prototype-c);
+}
+.prototype-v10-name {
+  background: #121212;
+  transition: background-color 0.25s ease;
+}
+@media (hover: hover) {
+  .prototype-v10-gridwrap:hover .prototype-v10-name {
+    background: var(--prototype-c);
+  }
+}
+.prototype-v10-stepped {
+  clip-path: polygon(
+    0 12px, 6px 12px, 6px 6px, 12px 6px, 12px 0,
+    calc(100% - 12px) 0, calc(100% - 12px) 6px, calc(100% - 6px) 6px, calc(100% - 6px) 12px, 100% 12px,
+    100% calc(100% - 12px), calc(100% - 6px) calc(100% - 12px), calc(100% - 6px) calc(100% - 6px), calc(100% - 12px) calc(100% - 6px), calc(100% - 12px) 100%,
+    12px 100%, 12px calc(100% - 6px), 6px calc(100% - 6px), 6px calc(100% - 12px), 0 calc(100% - 12px)
+  );
+}
+@keyframes prototype-v10-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes prototype-v10-ink {
+  0% {
+    background: var(--prototype-c);
+  }
+  45% {
+    background: #d4ff3a;
+    transform: scale(1.18);
+  }
+  100% {
+    background: #121212;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .prototype-v10-play .prototype-v10-cell {
+    animation: prototype-v10-pop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: var(--prototype-d);
+  }
+  .prototype-v10-play .prototype-v10-name {
+    animation:
+      prototype-v10-pop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) var(--prototype-d) both,
+      prototype-v10-ink 0.5s ease-out var(--prototype-nd) both;
+  }
+}
+
+/* ---------- v12 neutral base with scroll-driven project palettes ---------- */
+@property --v12-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f4f4f5;
+}
+@property --v12-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #18181b;
+}
+@property --v12-on-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fafafa;
+}
+body:has(.prototype-root-v12) {
+  background: #f4f4f5;
+  color: #18181b;
+}
+.prototype-v12-themed {
+  background-color: var(--v12-bg);
+  transition:
+    --v12-bg 0.9s ease,
+    --v12-accent 0.9s ease,
+    --v12-on-accent 0.9s ease;
+}
+.prototype-v12-header {
+  background-color: color-mix(in srgb, var(--v12-bg) 82%, transparent);
+}
+.prototype-v12-accent-fill {
+  background-color: var(--v12-accent);
+  color: var(--v12-on-accent);
+}
+.prototype-v12-accent-bg {
+  background-color: var(--v12-accent);
+}
+.prototype-v12-cell {
+  background: var(--prototype-c);
+}
+.prototype-v12-name {
+  background: #18181b;
+  transition: background-color 0.25s ease;
+}
+@media (hover: hover) {
+  .prototype-v12-gridwrap:hover .prototype-v12-name {
+    background: var(--prototype-c);
+  }
+}
+@keyframes prototype-v12-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes prototype-v12-ink {
+  0% {
+    background: var(--prototype-c);
+  }
+  45% {
+    background: var(--prototype-flash);
+    transform: scale(1.15);
+  }
+  100% {
+    background: #18181b;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .prototype-v12-play .prototype-v12-cell {
+    animation: prototype-v12-pop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: var(--prototype-d);
+  }
+  .prototype-v12-play .prototype-v12-name {
+    animation:
+      prototype-v12-pop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) var(--prototype-d) both,
+      prototype-v12-ink 0.6s ease-out var(--prototype-nd) both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prototype-v12-themed {
+    transition: none;
+  }
+}
