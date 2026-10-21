@@ -12,8 +12,9 @@ import { PrototypeV9NeonBento } from "./versions/PrototypeV9NeonBento";
 import { PrototypeV10Pixels } from "./versions/PrototypeV10Pixels";
 import { PrototypeV11Iuga } from "./versions/PrototypeV11Iuga";
 import { PrototypeV12Commits } from "./versions/PrototypeV12Commits";
+import { PrototypeV13Commits } from "./versions/PrototypeV13Commits";
 
-export const PROTOTYPE_VERSION_COUNT = 12;
+export const PROTOTYPE_VERSION_COUNT = 13;
 
 const prototypeVersions = {
   1: { Component: PrototypeV1Minimal, fonts: [f.prototypeGeist, f.prototypeGeistMono] },
@@ -28,6 +29,7 @@ const prototypeVersions = {
   10: { Component: PrototypeV10Pixels, fonts: [f.prototypeArchivo, f.prototypeGeistMono, f.prototypeSilkscreen] },
   11: { Component: PrototypeV11Iuga, fonts: [f.prototypeArchivo, f.prototypeGeistMono, f.prototypeSilkscreen] },
   12: { Component: PrototypeV12Commits, fonts: [f.prototypeGeist, f.prototypeGeistMono] },
+  13: { Component: PrototypeV13Commits, fonts: [f.prototypeArchivo, f.prototypeSpaceMono] },
 } as const;
 
 export type PrototypeVersion = keyof typeof prototypeVersions;

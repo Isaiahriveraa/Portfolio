@@ -13,7 +13,7 @@ export const prototypeProfile = {
   degree: "B.S. Informatics",
   schoolDates: "Sep 2024 - Dec 2027",
   classOf: "2027",
-  gpa: "3.57",
+  gpa: "3.47",
   location: "Seattle, WA",
   photo: "/headshot.png",
   resume: "/resume.pdf",

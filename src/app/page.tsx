@@ -8,7 +8,7 @@ export default async function Home({
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  // prototype: `?v=1`..`?v=12` render a redesign direction over this page.
+  // prototype: `?v=1`..`?v=13` render a redesign direction over this page.
   const { v } = await searchParams;
   if (v !== undefined) {
     const prototype = await import("@/prototype/PrototypeRoot");

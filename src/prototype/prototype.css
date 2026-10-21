@@ -339,3 +339,99 @@ body:has(.prototype-root-v12) {
     transition: none;
   }
 }
+
+/* ---------- v13: v12's scroll palettes with v2's type and highlight ---------- */
+@property --v13-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f4f4f2;
+}
+@property --v13-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #111111;
+}
+@property --v13-on-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fafafa;
+}
+body:has(.prototype-root-v13) {
+  background: #f4f4f2;
+}
+.prototype-v13-themed {
+  background-color: var(--v13-bg);
+  transition:
+    --v13-bg 0.9s ease,
+    --v13-accent 0.9s ease,
+    --v13-on-accent 0.9s ease;
+}
+.prototype-v13-header {
+  background-color: color-mix(in srgb, var(--v13-bg) 82%, transparent);
+}
+.prototype-v13-accent-fill {
+  background-color: var(--v13-accent);
+  color: var(--v13-on-accent);
+}
+.prototype-v13-local-fill {
+  background-color: var(--v13-local-accent);
+  color: var(--v13-local-on-accent);
+}
+.prototype-v13-local-bg {
+  background-color: var(--v13-local-accent);
+}
+.prototype-v13-local-rule {
+  border-color: var(--v13-local-accent);
+}
+.prototype-v13-mark {
+  --prototype-mark: var(--v13-local-mark, #d4ff3a);
+  background: linear-gradient(transparent 10%, var(--prototype-mark) 10%, var(--prototype-mark) 90%, transparent 90%);
+  padding: 0 0.15em;
+  margin: 0 -0.05em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.prototype-v13-mark-lime {
+  --prototype-mark: #d4ff3a;
+}
+.prototype-v13-cell {
+  background: var(--prototype-c);
+}
+.prototype-v13-name {
+  background: #111111;
+  transition: background-color 0.25s ease;
+}
+@media (hover: hover) {
+  .prototype-v13-gridwrap:hover .prototype-v13-name {
+    background: var(--prototype-c);
+  }
+}
+@keyframes prototype-v13-ink {
+  0% {
+    background: var(--prototype-c);
+  }
+  45% {
+    background: var(--prototype-flash);
+    transform: scale(1.15);
+  }
+  100% {
+    background: #111111;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .prototype-v13-play .prototype-v13-cell {
+    animation: prototype-v12-pop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: var(--prototype-d);
+  }
+  .prototype-v13-play .prototype-v13-name {
+    animation:
+      prototype-v12-pop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) var(--prototype-d) both,
+      prototype-v13-ink 0.6s ease-out var(--prototype-nd) both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prototype-v13-themed {
+    transition: none;
+  }
+}
