@@ -8,6 +8,7 @@ export function Projects() {
   return (
     <section id="work" className="scroll-mt-20 pt-20 lg:pt-28">
       <h2
+        data-palette="neutral"
         className="font-wide text-[44px] font-bold leading-none tracking-[-0.045em] sm:text-[72px]"
       >
         selected work.
