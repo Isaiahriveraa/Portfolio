@@ -33,7 +33,7 @@ export const SITE_CONFIG = {
 export const EDUCATION = {
   school: "University of Washington",
   degree: "B.S. Informatics",
-  dates: "Sep 2024 - Dec 2027",
+  dates: "Sep 2024 - Jun 2027",
   classOf: "2027",
   gpa: "3.47",
 } as const;
