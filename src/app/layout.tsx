@@ -1,22 +1,20 @@
 import type { Metadata } from "next";
-import { Syne, Outfit, JetBrains_Mono } from "next/font/google";
+import { Archivo, Space_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { MotionProvider } from "@/components/common/MotionProvider";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-display",
-  subsets: ["latin"],
-});
-
-const outfit = Outfit({
+const archivo = Archivo({
   variable: "--font-sans",
   subsets: ["latin"],
+  axes: ["wdth"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const spaceMono = Space_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -34,12 +32,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${syne.variable} ${outfit.variable} ${jetbrainsMono.variable} noise-overlay antialiased`}
-      >
-        <Header />
-        <main className="min-h-screen pt-16">{children}</main>
-        <Footer />
+      <body className={`${archivo.variable} ${spaceMono.variable} antialiased`}>
+        <MotionProvider>
+          <Header />
+          <main className="min-h-screen pt-16">{children}</main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );
