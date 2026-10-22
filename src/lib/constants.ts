@@ -1,5 +1,3 @@
-import { Github, Linkedin, Mail, type LucideIcon } from "lucide-react";
-
 /**
  * Navigation items for the header. Each links to a section on the page.
  */
@@ -9,34 +7,6 @@ export const NAV_ITEMS = [
 ] as const;
 
 export type NavItem = (typeof NAV_ITEMS)[number];
-
-/**
- * Social media links with icons.
- * Used by SocialLinks in the footer.
- */
-export interface SocialLink {
-  label: string;
-  href: string;
-  icon: LucideIcon;
-}
-
-export const SOCIAL_LINKS: SocialLink[] = [
-  {
-    label: "GitHub",
-    href: "https://github.com/Isaiahriveraa",
-    icon: Github,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/yirivera/",
-    icon: Linkedin,
-  },
-  {
-    label: "Email",
-    href: "mailto:yiriveraaa@gmail.com",
-    icon: Mail,
-  },
-];
 
 /**
  * Site-wide facts about Yonie, used across sections. Every value comes from
