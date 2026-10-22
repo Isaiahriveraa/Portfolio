@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo, Space_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { MotionProvider } from "@/components/common/MotionProvider";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -32,9 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${archivo.variable} ${spaceMono.variable} antialiased`}>
-        <Header />
-        <main className="min-h-screen pt-16">{children}</main>
-        <Footer />
+        <MotionProvider>
+          <Header />
+          <main className="min-h-screen pt-16">{children}</main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );
