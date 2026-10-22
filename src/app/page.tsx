@@ -9,9 +9,8 @@ export default function Home() {
     <>
       <Container>
         <Hero />
+        <Projects />
       </Container>
-      <Divider />
-      <Projects />
       <Divider />
       <About />
     </>
