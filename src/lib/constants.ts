@@ -1,20 +1,18 @@
 import { Github, Linkedin, Mail, type LucideIcon } from "lucide-react";
 
 /**
- * Navigation items for the header.
- * Each item has a label and href for smooth scrolling to sections.
+ * Navigation items for the header. Each links to a section on the page.
  */
 export const NAV_ITEMS = [
-  { label: "Projects", href: "#projects" },
+  { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
 ] as const;
 
 export type NavItem = (typeof NAV_ITEMS)[number];
 
 /**
  * Social media links with icons.
- * Used in Header, Footer, and SocialLinks components.
+ * Used by SocialLinks in the footer.
  */
 export interface SocialLink {
   label: string;
@@ -41,11 +39,21 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 /**
- * Site metadata for consistent branding.
+ * Site-wide facts about Yonie, used across sections. Every value comes from
+ * the résumé or a public profile; nothing here is a placeholder.
  */
 export const SITE_CONFIG = {
   name: "Yonie Isaiah Rivera-Aguilar",
+  shortName: "Yonie Rivera-Aguilar",
   title: "Software Engineer",
+  location: "Seattle, WA",
+  availability: "Open to internships and new-grad roles",
+  photo: "/headshot.png",
+  resume: "/resume.pdf",
   email: "yiriveraaa@gmail.com",
-  github: "Isaiahriveraa",
+  emailHref: "mailto:yiriveraaa@gmail.com",
+  github: "https://github.com/Isaiahriveraa",
+  githubHandle: "Isaiahriveraa",
+  linkedin: "https://www.linkedin.com/in/yirivera/",
 } as const;
+

@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className={`${archivo.variable} ${spaceMono.variable} antialiased`}>
         <MotionProvider>
           <Header />
-          <main className="min-h-screen pt-16">{children}</main>
+          <main id="top">{children}</main>
           <Footer />
         </MotionProvider>
       </body>
