@@ -1,32 +1,22 @@
-"use client";
-
-import { Container } from "@/components/layout/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { AnimatedSection } from "@/components/common/AnimatedSection";
-import { Marquee } from "@/components/ui/Marquee";
-import { ProjectCard } from "@/components/ui/ProjectCard";
+import { ProjectShowcase } from "@/components/ui/ProjectShowcase";
 import { PROJECTS } from "@/lib/projects";
 
+/**
+ * Selected work: one showcase per project, in the order of PROJECTS.
+ */
 export function Projects() {
   return (
-    <section id="projects" className="py-12 md:py-24 overflow-hidden">
-      <Container>
-        <AnimatedSection>
-          <SectionHeading
-            badge="Featured Work"
-            title="What I've Built"
-            subtitle="Projects I've shipped — from hackathons to production"
-          />
-        </AnimatedSection>
-      </Container>
-
-      <AnimatedSection delay={0.2}>
-        <Marquee speed={35} pauseOnHover>
-          {PROJECTS.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </Marquee>
-      </AnimatedSection>
+    <section id="work" className="scroll-mt-20 pt-20 lg:pt-28">
+      <h2
+        className="font-wide text-[44px] font-bold leading-none tracking-[-0.045em] sm:text-[72px]"
+      >
+        selected work.
+      </h2>
+      <div>
+        {PROJECTS.map((project) => (
+          <ProjectShowcase key={project.id} project={project} />
+        ))}
+      </div>
     </section>
   );
 }
