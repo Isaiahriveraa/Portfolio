@@ -26,6 +26,7 @@ export function Activity({ activity }: { activity: ContributionActivity | null }
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: customEasing, delay: 0.24 }}
+      data-palette="neutral"
       aria-labelledby="activity-title"
       className="rounded-[16px] border border-foreground/[0.08] bg-surface p-4 shadow-[0_20px_50px_-30px_rgba(17,17,17,0.3)] sm:p-7"
     >

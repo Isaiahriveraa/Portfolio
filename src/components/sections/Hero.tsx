@@ -24,6 +24,7 @@ export function Hero() {
   return (
     <section
       id="hero"
+      data-palette="neutral"
       className="grid grid-cols-1 items-center gap-8 pb-10 pt-8 sm:pt-12 lg:grid-cols-12 lg:gap-12 lg:pb-14 lg:pt-14"
     >
       <motion.div {...enter(0)} className="lg:col-span-5">
