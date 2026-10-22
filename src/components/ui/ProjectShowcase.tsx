@@ -66,7 +66,8 @@ function LinkArrow({ size = 15 }: { size?: number }) {
 
 /**
  * One project: the key result and my part beside its recordings, with the
- * full story expanding in place.
+ * full story expanding in place. `data-palette` tints the page while it is
+ * in view.
  */
 export function ProjectShowcase({ project }: { project: Project }) {
   const [open, setOpen] = useState(false);
@@ -76,6 +77,7 @@ export function ProjectShowcase({ project }: { project: Project }) {
 
   return (
     <article
+      data-palette={project.id}
       aria-labelledby={`${id}-title`}
       className="scroll-mt-24 py-12 lg:py-16"
       style={

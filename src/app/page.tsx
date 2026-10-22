@@ -4,6 +4,7 @@ import { Projects } from "@/components/sections/Projects";
 import { About } from "@/components/sections/About";
 import { Container } from "@/components/layout/Container";
 import { Divider } from "@/components/ui/Divider";
+import { ScrollPalette } from "@/components/common/ScrollPalette";
 import { SITE_CONFIG } from "@/lib/constants";
 import { getContributionActivity } from "@/lib/github";
 
@@ -12,6 +13,7 @@ export default async function Home() {
   return (
     <>
       <Container>
+        <ScrollPalette />
         <Hero />
         <Activity activity={activity} />
         <Projects />
