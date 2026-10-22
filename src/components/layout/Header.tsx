@@ -1,93 +1,59 @@
-"use client";
-
-import { useState } from "react";
-import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, FileText, Mail } from "lucide-react";
 import { NAV_ITEMS, SITE_CONFIG } from "@/lib/constants";
 import { Container } from "./Container";
-import { SocialLinks } from "@/components/common/SocialLinks";
-import { cn } from "@/lib/utils";
+import { PixelMonogram } from "@/components/ui/PixelMonogram";
 
 /**
- * Fixed header with blur backdrop, navigation links, and mobile menu.
+ * Sticky header: the site mark, section links, and a split pill that keeps
+ * email and the résumé one click away on every screen size.
  */
 export function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
-
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
-      <Container>
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo / Name */}
-          <Link
-            href="/"
-            className="text-lg font-semibold text-foreground transition-colors hover:text-accent"
-          >
-            {SITE_CONFIG.name.split(" ")[0]}
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-8 md:flex">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-sm text-text-muted transition-colors hover:text-foreground"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Desktop Social Links */}
-          <div className="hidden md:block">
-            <SocialLinks iconSize={18} />
+    <header className="page-header sticky top-0 z-30 border-b border-foreground/[0.07] backdrop-blur-md">
+      <Container className="flex h-16 items-center justify-between gap-4">
+        <a href="#top" className="flex items-center gap-2.5" aria-label={`${SITE_CONFIG.shortName}, back to top`}>
+          <PixelMonogram />
+          <span className="font-wide text-[15px] font-bold tracking-[-0.03em] sm:text-[17px]">
+            {SITE_CONFIG.shortName.toLowerCase()}
+          </span>
+        </a>
+        <nav className="flex items-center gap-1 sm:gap-2" aria-label="Primary">
+          {NAV_ITEMS.map((item, i) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className={`hidden rounded-full px-3 py-2 text-[14px] font-semibold text-text-secondary transition hover:bg-foreground/5 hover:text-foreground md:block ${
+                i === NAV_ITEMS.length - 1 ? "mr-1" : ""
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
+          <div className="flex items-stretch overflow-hidden rounded-full border border-foreground/15 bg-surface shadow-[0_1px_2px_rgba(17,17,17,0.06)]">
+            <a
+              href={SITE_CONFIG.emailHref}
+              className="flex items-center gap-2 px-3 py-2 text-[14px] font-semibold text-foreground transition-colors hover:bg-[#f4f4f2] sm:px-4"
+            >
+              <Mail size={16} strokeWidth={2} />
+              <span className="sr-only sm:not-sr-only">Email me</span>
+            </a>
+            <a
+              href={SITE_CONFIG.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="page-accent-fill group flex items-center gap-1.5 px-3 py-2 text-[14px] font-semibold transition-[filter] hover:brightness-110 sm:px-4"
+            >
+              <FileText size={16} strokeWidth={2} className="hidden sm:block" />
+              Résumé
+              <ArrowUpRight
+                size={15}
+                strokeWidth={2.25}
+                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </a>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            onClick={toggleMobileMenu}
-            className="p-2 text-text-muted transition-colors hover:text-foreground md:hidden"
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+        </nav>
       </Container>
-
-      {/* Mobile Menu */}
-      <div
-        id="mobile-menu"
-        aria-hidden={!isMobileMenuOpen}
-        className={cn(
-          "overflow-hidden border-t border-border/50 bg-background/95 backdrop-blur-md transition-all duration-300 md:hidden",
-          isMobileMenuOpen ? "max-h-96" : "max-h-0 border-t-0"
-        )}
-      >
-        <Container>
-          <nav className="flex flex-col gap-4 py-4">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={closeMobileMenu}
-                className="text-base text-text-muted transition-colors hover:text-foreground"
-              >
-                {item.label}
-              </a>
-            ))}
-            <div className="pt-4">
-              <SocialLinks iconSize={20} />
-            </div>
-          </nav>
-        </Container>
-      </div>
     </header>
   );
 }
