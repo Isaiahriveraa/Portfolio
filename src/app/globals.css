@@ -111,3 +111,54 @@ body {
   }
 }
 
+/*
+ * Contribution graph. Cells pop in column by column; cells under the name
+ * flash in a project accent, then settle to ink. Hovering the graph shows the
+ * real days under the name.
+ */
+.contribution-cell {
+  background: var(--cell-color);
+}
+.contribution-name {
+  background: var(--text-primary);
+  transition: background-color 0.25s ease;
+}
+@media (hover: hover) {
+  .contribution-graph:hover .contribution-name {
+    background: var(--cell-color);
+  }
+}
+@keyframes contribution-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes contribution-ink {
+  0% {
+    background: var(--cell-color);
+  }
+  45% {
+    background: var(--cell-flash);
+    transform: scale(1.15);
+  }
+  100% {
+    background: var(--text-primary);
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .contribution-intro .contribution-cell {
+    animation: contribution-pop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: var(--cell-delay);
+  }
+  .contribution-intro .contribution-name {
+    animation:
+      contribution-pop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) var(--cell-delay) both,
+      contribution-ink 0.6s ease-out var(--name-delay) both;
+  }
+}
