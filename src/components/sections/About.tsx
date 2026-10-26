@@ -1,118 +1,87 @@
-"use client";
-
 import Image from "next/image";
-import { GitHubCalendar } from "react-github-calendar";
-import { Container } from "@/components/layout/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { AnimatedSection } from "@/components/common/AnimatedSection";
-import { SpotlightCard } from "@/components/ui/SpotlightCard";
-import { ResumePreview } from "@/components/ui/ResumePreview";
-import { SKILLS, SKILL_CATEGORIES, type SkillCategory } from "@/data/skills";
-import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { EDUCATION } from "@/lib/constants";
+import { ACTIVITIES, IUGA_ROLE as iuga } from "@/data/experience";
 
-const skillOrder: SkillCategory[] = ["languages", "frontend", "backend", "tools"];
-
+/**
+ * Who I am in one line, my IUGA role up front, then education and clubs.
+ */
 export function About() {
   return (
-    <section id="about" className="py-12 md:py-24">
-      <Container>
-        <AnimatedSection>
-          <SectionHeading
-            badge="About"
-            title="About Me"
-            subtitle="What I build, what I know, and proof of work"
-          />
-        </AnimatedSection>
-
-        <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2 lg:items-start">
-          {/* Left Column — Bio + Resume */}
-          <div className="space-y-6 md:space-y-8">
-            <AnimatedSection delay={0.1}>
-              <div className="flex items-start gap-4 sm:gap-6">
-                <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl border border-border">
-                  <Image
-                    src="/profile.jpg"
-                    alt="Yonie Isaiah Rivera-Aguilar"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                <div className="space-y-3 text-text-secondary text-sm leading-relaxed">
-                  <p>
-                    Full-stack engineer specializing in React, Next.js, and TypeScript.
-                    I build tools that solve real problems — from peer-to-peer tutoring
-                    platforms to voice-native macOS automation.
-                  </p>
-                  <p>
-                    Currently shipping{" "}
-                    <span className="text-accent-light">Guru</span> (peer tutoring @ WINFO) and{" "}
-                    <span className="text-accent-light">Koda</span> (on-device voice agent for macOS).
-                  </p>
-                </div>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.2}>
-              <ResumePreview />
-            </AnimatedSection>
-          </div>
-
-          {/* Right Column — Skills + GitHub Calendar */}
-          <div className="space-y-6">
-            <AnimatedSection delay={0.15}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                {skillOrder.map((category) => {
-                  const config = SKILL_CATEGORIES[category];
-                  const skills = SKILLS.filter((s) => s.category === category);
-                  return (
-                    <SpotlightCard key={category} className="rounded-xl p-4">
-                      <div className="mb-3 flex items-center gap-2 text-accent">
-                        <config.icon size={16} />
-                        <h3 className="text-sm font-semibold">{config.label}</h3>
-                      </div>
-                      <ul className="space-y-1.5">
-                        {skills.map((skill) => (
-                          <li
-                            key={skill.name}
-                            className="flex items-center gap-2 text-xs text-text-secondary"
-                          >
-                            <skill.icon size={12} className="text-text-muted" />
-                            {skill.name}
-                          </li>
-                        ))}
-                      </ul>
-                    </SpotlightCard>
-                  );
-                })}
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.25}>
-              <div className="glass-card rounded-xl p-4">
-                <h3 className="mb-3 text-sm font-semibold text-accent text-center">
-                  Contribution Activity
-                </h3>
-                <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 flex justify-center">
-                  <GitHubCalendar
-                    username="Isaiahriveraa"
-                    colorScheme="dark"
-                    fontSize={11}
-                    blockSize={8}
-                    blockMargin={2}
-                    theme={{
-                      dark: ["#1a1a25", "#4d1f1f", "#8f2f2f", "#d94f4f", "#ff5252"],
-                    }}
-                  />
-                </div>
-              </div>
-            </AnimatedSection>
-            <h3 className="text-center text-xs text-text-secondary">
-              <Link href="https://github.com/isaiahriveraa" className="underline underline-offset-4" target="_blank">View on GitHub</Link>
-            </h3>
-          </div>
+    <section id="about" data-palette="neutral" className="scroll-mt-20 border-t border-foreground/15 py-16 lg:py-24">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
+        <div className="lg:col-span-5">
+          <h2 className="font-wide text-[44px] font-bold leading-none tracking-[-0.045em] sm:text-[72px]">about me.</h2>
+          <p className="mt-6 max-w-[34ch] text-[20px] font-light leading-[1.4] tracking-[-0.015em] sm:text-[24px]">
+            I&apos;m a <strong className="font-bold">full-stack developer</strong> working mostly in React, Next.js, and
+            TypeScript. I build tools that solve real problems, from peer-to-peer tutoring to voice-native macOS
+            automation.
+          </p>
         </div>
-      </Container>
-    </section >
+        <div className="space-y-6 lg:col-span-7">
+          <div className="rounded-[16px] border border-foreground/[0.08] bg-surface p-6 shadow-[0_20px_50px_-34px_rgba(17,17,17,0.35)] sm:p-8">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <Image
+                src={iuga.logo.src}
+                alt={iuga.logo.alt}
+                width={iuga.logo.width}
+                height={iuga.logo.height}
+                className="h-10 w-auto"
+              />
+              <a
+                href={iuga.site}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1.5 rounded-full border border-foreground/15 px-3 py-1.5 font-mono text-[13px] transition hover:bg-foreground hover:text-white"
+              >
+                {iuga.siteLabel}
+                <ArrowUpRight
+                  size={14}
+                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </a>
+            </div>
+            <h3 className="font-wide mt-6 text-[30px] font-bold leading-[1.05] tracking-[-0.035em] sm:text-[36px]">
+              {iuga.title}
+            </h3>
+            <p className="mt-1 text-[17px] font-semibold text-text-secondary">
+              {iuga.organization} ({iuga.acronym}), UW
+            </p>
+            <p className="mt-4 max-w-[62ch] text-[16px] leading-[1.6] text-text-secondary">
+              {iuga.acronym} is the undergraduate student government for UW Informatics, run by Informatics
+              undergraduates for Informatics undergraduates.
+            </p>
+            <p className="mt-3 max-w-[62ch] text-[16px] leading-[1.6] text-text-secondary">
+              I lead {iuga.acronym}&apos;s IT Committee, which maintains iuga.info so students can find resources and
+              discover events, and supports the iStartup Lab.{" "}
+              <span className="highlight highlight-lime font-semibold text-foreground">
+                I built the site&apos;s shop and most of its events pages: 249 of its 616 commits.
+              </span>
+            </p>
+          </div>
+          <dl className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <div>
+              <dt className="font-mono text-[12px] text-text-muted">{EDUCATION.dates}</dt>
+              <dd className="mt-1.5 text-[17px] font-bold leading-snug">
+                {EDUCATION.school}
+                <span className="mt-0.5 block text-[15px] font-normal text-text-secondary">
+                  {EDUCATION.degree}, class of {EDUCATION.classOf}
+                </span>
+                <span className="mt-0.5 block text-[15px] font-normal text-text-secondary">GPA {EDUCATION.gpa}</span>
+              </dd>
+            </div>
+            {ACTIVITIES.map((a) => (
+              <div key={a.title}>
+                <dt className="font-mono text-[12px] text-text-muted">{a.period}</dt>
+                <dd className="mt-1.5 text-[17px] font-bold leading-snug">
+                  {a.title}
+                  <span className="mt-0.5 block text-[15px] font-normal text-text-secondary">{a.role}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
   );
 }
